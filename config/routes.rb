@@ -1,6 +1,15 @@
 Rails.application.routes.draw do
-  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
+  # rootをサインイン画面に設定
+  devise_scope :user do
+    root "users/sessions#new"
+    get "users/sign_out", to: "users/sessions#destroy"
+  end
 
-  # Defines the root path route ("/")
-  # root "articles#index"
+  # サインイン後のルーティング
+  get "/profile", to: "users#show"
+
+  devise_for :users, controllers: {
+    sessions: "users/sessions",
+    registrations: "users/registrations"
+  }
 end
