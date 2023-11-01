@@ -33,3 +33,6 @@
 
 # Ignore master key for decrypting credentials and more.
 /config/master.key
+
+# 指摘ファイルを無視
+/指摘.txt
